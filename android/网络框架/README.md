@@ -1,9 +1,9 @@
 ## 三大网络框架
- 1)    [Retrofit](https://github.com/ai-com-app/retrofit)
+ 1)    [Retrofit](https://github.com/ai-com-app/retrofit) Type-safe HTTP client for Android and Java by Square, Inc.
 
-2)    [OkHttp](https://github.com/ai-com-app/okhttp)
+2)    [OkHttp](https://github.com/ai-com-app/okhttp) Square’s meticulous HTTP client for Java and Kotlin.
 
-3)    [Volley](https://github.com/ai-com-app/volley)
+3)    [Volley](https://github.com/ai-com-app/volley) Volley is an HTTP library that makes networking for Android apps easier and, most importantly, faster.
 
 ### 介绍
 ## Retrofit
@@ -55,8 +55,5 @@ Square 公司开源的 OkHttp 是一个专注于连接效率的 HTTP 客户端�
 4. 图片加载性能一般。
 5. 使用的是HttpClient，HttpURLConnection。不过在android
 6. 6.0不支持HttpClient了，如果想支持得添加org.apache.http.legacy.jar。
-
-# 总结
-综上，如果以上三种网络库你都能熟练掌握,那么优先推荐使用Retrofit,前提是最好你们的后台api也能遵循RESTful的风格， 其次如果不想使用或者没能力掌握Retrofit ，那么推荐使用Volley ，毕竟Volley不需要做过多的封装，如果需要上传大数据， 那么不建议使用 Volley，该采用 OkHttp 。
 
 

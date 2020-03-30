@@ -1,9 +1,12 @@
-## 三大图片框架
-1)    [Picasso](https://github.com/ai-com-app/picasso)
+## 图片框架
+1)    [Picasso](https://github.com/ai-com-app/picasso) A powerful image downloading and caching library for Android.
 
-2)    [Glide](https://github.com/ai-com-app/glide)
+2)    [Glide](https://github.com/ai-com-app/glide) An image loading and caching library for Android focused on smooth scrolling.
 
-3)    [Fresco](https://github.com/ai-com-app/fresco)
+3)    [Fresco](https://github.com/ai-com-app/fresco) An Android library for managing images and the memory they use. 
+
+4)    [PhotoView](https://github.com/chrisbanes/PhotoView)  Implementation of ImageView for Android that supports zooming, by various touch gestures.
+
 
 ### 介绍
 ## Picasso
@@ -16,7 +19,7 @@
 无”本地缓存，不是说没有本地缓存，而是 Picasso 自己没有实现，交给了 Square 的另外一个网络库 okhttp 去实现，这样的好处是可以通过请求 Response Header 中的 Cache-Control 及 Expired 控制图片的过期时间。
 
 ### 缺点
-1. 不支持GIF, 并且它可能是想让服务器去处理图片的缩放, 它缓存的图片是未缩放的, 并且默认使用ARGB_8888格式缓存图片, 缓存体积大.
+1. 不支持GIF, 并且它可能是想让服务器去处理图片的缩放, 它缓存的图片是未缩放的, 并且默认使用ARGB_8888格式缓存图片, 缓存体积大。
 
 ## Glide
 ### 优点
@@ -28,15 +31,12 @@ Glide 对每个 context 都保持一个 RequestManager，通过 FragmentTransact
 4. 支持 okhttp、Volley
 Glide 默认通过 UrlConnection 获取数据，可以配合 okhttp 或是 Volley 使用。实际 ImageLoader、Picasso 也都支持 okhttp、Volley。
 5. 内存友好
-    1. Glide 的内存缓存有个 active 的设计
+    * Glide 的内存缓存有个 active 的设计。
 从内存缓存中取数据时，不像一般的实现用 get，而是用 remove，再将这个缓存数据放到一个 value 为软引用的 activeResources map 中，并计数引用数，在图片加载完成后进行判断，如果引用计数为空则回收掉。
-
-    2. 内存缓存更小图片
-Glide 以 url、viewwidth、viewheight、屏幕的分辨率等做为联合 key，将处理后的图片缓存在内存缓存中，而不是原始图片以节省大小
-
-    3. 与 Activity/Fragment 生命周期一致，支持 trimMemory
-
-    4. 图片默认使用默认 RGB565 而不是 ARGB888， 虽然清晰度差些，但图片更小，也可配置到 ARGB_888。
+    * 内存缓存更小图片
+Glide 以 url、viewwidth、viewheight、屏幕的分辨率等做为联合 key，将处理后的图片缓存在内存缓存中，而不是原始图片以节省大小。
+    * 与 Activity/Fragment 生命周期一致，支持 trimMemory
+    * 图片默认使用默认 RGB565 而不是 ARGB888， 虽然清晰度差些，但图片更小，也可配置到 ARGB_888。
 
 ### 缺点
 1. Glide 可以通过 signature 或不使用本地缓存支持 url 过期。
@@ -44,23 +44,22 @@ Glide 以 url、viewwidth、viewheight、屏幕的分辨率等做为联合 key�
 ## Fresco
 ### 优点
 
-1. 图片存储在安卓系统的匿名共享内存, 而不是虚拟机的堆内存中, 图片的中间缓冲数据也存放在本地堆内存, 所以, 应用程序有更多的内存使用,不会因为图片加载而导致oom, 同时也减少垃圾回收器频繁调用回收Bitmap导致的界面卡顿,性能更高.
-
-2. 渐进式加载JPEG图片, 支持图片从模糊到清晰加载
-
-3. 图片可以以任意的中心点显示在ImageView, 而不仅仅是图片的中心.
-
-4. JPEG图片改变大小也是在native进行的, 不是在虚拟机的堆内存, 同样减少OOM
-
-5. 很好的支持GIF图片的显示
+1. 图片存储在安卓系统的匿名共享内存, 而不是虚拟机的堆内存中, 图片的中间缓冲数据也存放在本地堆内存, 所以, 应用程序有更多的内存使用,不会因为图片加载而导致oom, 同时也减少垃圾回收器频繁调用回收Bitmap导致的界面卡顿,性能更高。
+2. 渐进式加载JPEG图片, 支持图片从模糊到清晰加载。
+3. 图片可以以任意的中心点显示在ImageView, 而不仅仅是图片的中心。
+4. JPEG图片改变大小也是在native进行的, 不是在虚拟机的堆内存, 同样减少OOM。
+5. 很好的支持GIF图片的显示。
 
 ### 缺点
-
 1. 框架较大, 影响Apk体积
-
 2. 使用较繁琐
 
-# 总结
-Picasso所能实现的功能，Glide都能做，无非是所需的设置不同。
-但是Picasso体积比起Glide小太多如果项目中网络请求本身用的就是okhttp或者retrofit(本质还是okhttp)，那么建议用Picasso，体积会小很多(Square全家桶的干活)。Glide的好处是大型的图片流，比如gif、Video，如果你们是做美拍、爱拍这种视频类应用，建议使用。Fresco在5.0以下的内存优化非常好，代价就是体积也非常的大，按体积算Fresco>Glide>Picasso不过在使用起来也有些不便（小建议：他只能用内置的一个ImageView来实现这些功能，用起来比较麻烦，我们通常是根据Fresco自己改改，直接使用他的Bitmap层）
+## PhotoView
+### 优点
+1. 使用多点触控和两次轻按即可进行缩放。
+2. 滚动顺畅。
+3. 在滚动父级（例如ViewPager）中使用时，效果很好。
+4. 允许在显示的矩阵发生更改时通知应用程序。 在需要基于当前缩放/滚动位置更新用户界面。
+5. 通过添加接口，允许在用户点击图片时发出通知，。
+
 
