@@ -1,11 +1,13 @@
 ## 图片框架
-1)    [Picasso](https://github.com/ai-com-app/picasso) A powerful image downloading and caching library for Android.
 
-2)    [Glide](https://github.com/ai-com-app/glide) An image loading and caching library for Android focused on smooth scrolling.
 
-3)    [Fresco](https://github.com/ai-com-app/fresco) An Android library for managing images and the memory they use. 
+1. [Glide](https://github.com/ai-com-app/glide) An image loading and caching library for Android focused on smooth scrolling.
 
-4)    [PhotoView](https://github.com/chrisbanes/PhotoView)  Implementation of ImageView for Android that supports zooming, by various touch gestures.
+2. [Picasso](https://github.com/ai-com-app/picasso) A powerful image downloading and caching library for Android.
+
+3. [Fresco](https://github.com/ai-com-app/fresco) An Android library for managing images and the memory they use. 
+
+4. [PhotoView](https://github.com/chrisbanes/PhotoView)  Implementation of ImageView for Android that supports zooming, by various touch gestures.
 
 
 ### 介绍

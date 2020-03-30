@@ -1,9 +1,9 @@
-## 三大网络框架
- 1)    [Retrofit](https://github.com/ai-com-app/retrofit) Type-safe HTTP client for Android and Java by Square, Inc.
+## 网络框架
+1. [Retrofit](https://github.com/ai-com-app/retrofit) Type-safe HTTP client for Android and Java by Square, Inc.
 
-2)    [OkHttp](https://github.com/ai-com-app/okhttp) Square’s meticulous HTTP client for Java and Kotlin.
+2. [OkHttp](https://github.com/ai-com-app/okhttp) Square’s meticulous HTTP client for Java and Kotlin.
 
-3)    [Volley](https://github.com/ai-com-app/volley) Volley is an HTTP library that makes networking for Android apps easier and, most importantly, faster.
+3. [Volley](https://github.com/ai-com-app/volley) Volley is an HTTP library that makes networking for Android apps easier and, most importantly, faster.
 
 ### 介绍
 ## Retrofit
